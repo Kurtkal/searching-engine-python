@@ -57,5 +57,7 @@ def search_documents(query):
     if not results:
         return []
     
+    matched_id=set.intersection(*results)
+    
     # Пересекаем результаты, чтобы найти общий список документов
-    return list(set.intersection(*results)) if results else []
+    return [urls[doc_id] for doc_id in matched_id] if results else []
